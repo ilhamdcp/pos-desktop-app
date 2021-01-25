@@ -1,0 +1,27 @@
+[
+    {
+        "name": "Americano",
+        "price": 15000,
+        "imageUri": null
+    },
+    {
+        "name": "Kopi Susu Gula Aren",
+        "price": 18000,
+        "imageUri": null
+    },
+    {
+        "name": "Vanilla Latte",
+        "price": 20000,
+        "imageUri": null
+    },
+    {
+        "name": "Caramel Latte",
+        "price": 20000,
+        "imageUri": null
+    },
+    {
+        "name": "Blue Dragon",
+        "price": 18000,
+        "imageUri": null
+    }
+]
