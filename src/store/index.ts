@@ -1,6 +1,6 @@
 import { createStore } from 'vuex';
-import { MenuItem } from '@/model/MenuItem';
-import { OrderItem } from '@/model/OrderItem';
+import { MenuItem } from '@/interface/MenuItem';
+import { OrderItem } from '@/interface/OrderItem';
 import menuData from '@/data/menu.json';
 
 export default createStore({
