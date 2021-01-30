@@ -28,10 +28,15 @@ export default createStore({
   },
   actions: {
     addOrder(context, newOrder: OrderItem) {
-      if (this.state.orderItems
-        .filter((orderItem) => orderItem.name === newOrder.name).length === 0) {
+      const currentOrder = this.state.orderItems
+        .find((orderItem) => orderItem.name === newOrder.name);
+      if (currentOrder === undefined) {
+        const temp = newOrder;
+        temp.quantity = 1;
         context.commit('insertOrder', newOrder);
       } else {
+        currentOrder.quantity += 1;
+        console.log(currentOrder.quantity);
         context.commit('updateOrder', newOrder);
       }
     },

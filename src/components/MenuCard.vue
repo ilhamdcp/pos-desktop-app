@@ -17,12 +17,10 @@ export default {
   },
   setup(props) {
     const store = useStore();
-    let quantity = 0;
     return {
       quantity: 0,
       addMenu() {
-        quantity += 1;
-        store.dispatch('addOrder', { name: props.name, quantity });
+        store.dispatch('addOrder', { name: props.name, individualPrice: props.price });
       },
     };
   },
@@ -36,6 +34,7 @@ export default {
     margin: 5px;
     border-radius: 5px;
     width: 30%;
+    min-width: 200px;
     text-align: left;
   }
   .name-text {
@@ -49,10 +48,10 @@ export default {
     float: right;
     background-color: rgb(2, 173, 2);
     color: white;
-    padding: 5px;
+    padding: 5px 10px 5px 10px;;
     margin: 5px;
     border-radius: 5px;
-    width: 20%;
+    width: fit-content;
     outline: 0;
     border: none;
     font-size: 12pt;

@@ -1,23 +1,53 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js + TypeScript App"/>
-    <MenuList/>
-    <OrderList/>
+    <div class="navlist-container">
+
+    </div>
+    <div class="menulist-container">
+      <MenuList/>
+    </div>
+    <div class="orderlist-container">
+      <OrderList/>
+    </div>
   </div>
 </template>
 
 <script lang="ts">
-import HelloWorld from '@/components/HelloWorld.vue'; // @ is an alias to /src
 import MenuList from '@/components/MenuList.vue';
 import OrderList from '@/components/OrderList.vue';
 
 export default {
   name: 'Home',
   components: {
-    HelloWorld,
     MenuList,
     OrderList,
   },
 };
 </script>
+<style scoped>
+  .home {
+    display: flex;
+    flex-wrap: wrap;
+    position: relative;
+    width: 100%;
+    height: 100%;
+  }
+
+  .navlist-container {
+    overflow-y: scroll;
+    width: 20%;
+  }
+
+  .menulist-container {
+    height: 100vh;
+    overflow-y: scroll;
+    overflow-x: scroll;
+    width: 60%;
+  }
+
+  .orderlist-container {
+    height: 100vh;
+    overflow-y: scroll;
+    width: 20%;
+  }
+</style>
