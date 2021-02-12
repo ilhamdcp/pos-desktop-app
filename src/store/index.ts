@@ -2,6 +2,7 @@ import { createStore } from 'vuex';
 import { MenuItem } from '@/interface/MenuItem';
 import { OrderItem } from '@/interface/OrderItem';
 import menuData from '@/data/menu.json';
+import MutationType from '@/store/MutationType';
 
 export default createStore({
   state: {
@@ -33,15 +34,15 @@ export default createStore({
       if (currentOrder === undefined) {
         const temp = newOrder;
         temp.quantity = 1;
-        context.commit('insertOrder', newOrder);
+        context.commit(MutationType.INSERT_ORDER, newOrder);
       } else {
         currentOrder.quantity += 1;
         console.log(currentOrder.quantity);
-        context.commit('updateOrder', newOrder);
+        context.commit(MutationType.UPDATE_ORDER, newOrder);
       }
     },
-    deleteOrder(context, orderName: string) {
-      context.commit('deleteOrder', orderName);
+    removeOrder(context, orderName: string) {
+      context.commit(MutationType.DELETE_ORDER, orderName);
     },
   },
 });
