@@ -1,19 +1,24 @@
 <template>
   <div class="order-card">
-    <p style="float=right" v-on:click="removeOrder()">Close</p>
-    <p class="menu-name">{{ name }}</p>
-    <p class="menu-quantity">x {{ quantity }}</p>
+    <button class="menu-close" v-on:click="removeOrder()"><img src="@/assets/close.png"></button>
+    <div class="menu-name">{{ name }}</div>
+    <OrderQuantity v-bind:name="name" v-bind:quantity="quantity"/>
     <p class="menu-subtotal">@: Rp{{ subtotal() }}</p>
   </div>
 </template>
 <script>
 import { useStore } from 'vuex';
+import OrderQuantity from '@/components/OrderQuantity.vue';
+import ActionType from '@/store/ActionType';
 
 export default {
   props: {
     name: String,
     quantity: Number,
     individualPrice: Number,
+  },
+  components: {
+    OrderQuantity,
   },
   setup(props) {
     const store = useStore();
@@ -22,7 +27,7 @@ export default {
         return props.quantity * props.individualPrice;
       },
       removeOrder() {
-        store.dispatch('deleteOrder', props.name);
+        store.dispatch(ActionType.REMOVE_ORDER, props.name);
       },
     };
   },
@@ -50,5 +55,24 @@ export default {
   .menu-subtotal {
     text-align: end;
     color: orange;
+  }
+
+  .menu-close {
+    float: right;
+    border: none;
+    background: none;
+    width: 16x;
+    height: 16px;
+    padding: 0;
+  }
+
+  .menu-close:hover {
+    cursor: pointer;
+  }
+
+  .menu-close img {
+    max-width: 100%;
+    max-height: 100%;
+    vertical-align: middle;
   }
 </style>

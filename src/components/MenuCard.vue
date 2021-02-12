@@ -6,6 +6,7 @@
   </div>
 </template>
 <script lang="ts">
+import ActionType from '@/store/ActionType';
 import { useStore } from 'vuex';
 
 export default {
@@ -20,7 +21,7 @@ export default {
     return {
       quantity: 0,
       addMenu() {
-        store.dispatch('addOrder', { name: props.name, individualPrice: props.price });
+        store.dispatch(ActionType.ADD_ORDER, { name: props.name, individualPrice: props.price });
       },
     };
   },
