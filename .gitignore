@@ -105,3 +105,6 @@ dist
 
 #Electron-builder output
 /dist_electron
+
+# Mac junk file
+.DS_Store
