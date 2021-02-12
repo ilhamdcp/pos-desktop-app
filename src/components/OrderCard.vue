@@ -3,7 +3,7 @@
     <button class="menu-close" v-on:click="removeOrder()"><img src="@/assets/close.png"></button>
     <div class="menu-name">{{ name }}</div>
     <OrderQuantity v-bind:name="name" v-bind:quantity="quantity"/>
-    <p class="menu-subtotal">@: Rp{{ subtotal() }}</p>
+    <p class="menu-subtotal">Rp {{ subtotal().toLocaleString() }}</p>
   </div>
 </template>
 <script>

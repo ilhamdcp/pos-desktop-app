@@ -1,11 +1,11 @@
 <template>
   <div class="menu-card">
     <p class="name-text"> {{ name }}</p>
-    <p class="price-text"> {{ price }} </p>
+    <p class="price-text">Rp {{ price.toLocaleString() }} </p>
     <button class="buy-button" v-on:click="addMenu()">Beli</button>
   </div>
 </template>
-<script lang="ts">
+<script>
 import ActionType from '@/store/ActionType';
 import { useStore } from 'vuex';
 

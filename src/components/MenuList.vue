@@ -1,5 +1,5 @@
 <template>
-  <h1>MenuList mounted</h1>
+  <h1>Menu</h1>
   <div class="menu-list">
     <MenuCard v-for="menuItem in menuItems" :key="menuItem.name" v-bind="menuItem"/>
   </div>
