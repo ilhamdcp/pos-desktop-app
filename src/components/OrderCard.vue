@@ -2,6 +2,8 @@
   <div class="order-card">
     <button class="menu-close" v-on:click="removeOrder()"><img src="@/assets/close.png"></button>
     <div class="menu-name">{{ name }}</div>
+    <input type="text" class="form-menu-item-notes"
+      placeholder="Notes"/>
     <OrderQuantity v-bind:name="name" v-bind:quantity="quantity"/>
     <p class="menu-subtotal">Rp {{ subtotal().toLocaleString() }}</p>
   </div>
@@ -75,4 +77,26 @@ export default {
     max-height: 100%;
     vertical-align: middle;
   }
+
+  .form-menu-item-notes {
+  border: none;
+  margin-bottom: 5px;
+  font-size: 12pt;
+  border-bottom: solid 1px black;
+  transition: 0.3s all ease;
+  -moz-transition: 0.3s all ease;
+  -webkit-transition: 0.3s all ease;
+  text-decoration: none;
+  outline: none;
+  background: none;
+  color: gray;
+  width: 80%;
+}
+
+.form-menu-item-notes:focus {
+  text-decoration: none;
+  border-bottom: solid 1px rgb(35, 149, 255);
+  box-shadow: none;
+  color: black;
+}
 </style>

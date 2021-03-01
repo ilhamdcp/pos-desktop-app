@@ -1,7 +1,8 @@
 enum MutationType {
-  INSERT_ORDER = 'insertOrder',
-  UPDATE_ORDER = 'updateOrder',
-  DELETE_ORDER = 'deleteOrder',
+  INSERT_ORDER_ITEM = 'insertOrderItem',
+  UPDATE_ORDER_ITEM = 'updateOrderItem',
+  DELETE_ORDER_ITEM = 'deleteOrderItem',
+  ADD_ORDER = 'updateOrder'
 }
 
 export default MutationType;

@@ -1,16 +1,26 @@
 <template>
   <h2>Order</h2>
-    <OrderCard v-bind="orderItem" v-for="orderItem in orderItems" :key="orderItem.name"/>
+  <div class="div-customer-name">
+    <input type="text" 
+    class="form-customer-name"
+    placeholder="Customer Name" 
+    v-on:keyup.enter="updateCustomerName" 
+    v-if="orderItems.length > 0"/>
+  </div>
+  <OrderCard v-bind="orderItem" v-for="orderItem in orderItems" :key="orderItem.name"/>
   <div class="div-total" v-if="orderItems.length > 0">
     <div class="div-subtotal">Subtotal: Rp {{ subTotal.toLocaleString() }}</div>
     <div class="div-tax">Tax 10%</div>
   </div>
+  <button class="buy-button" v-if="orderItems.length > 0">Confirm</button>
 </template>
 <script lang="ts">
-import { computed } from 'vue';
+import { computed, ref } from 'vue';
 import { useStore } from 'vuex';
 import OrderCard from '@/components/OrderCard.vue';
 import { OrderItem } from '@/interface/OrderItem';
+
+const customerName = ref('');
 
 export default {
   components: {
@@ -18,12 +28,21 @@ export default {
   },
   setup() {
     const store = useStore();
+    const customerName = ref('');
     return {
       orderItems: computed(() => store.state.orderItems),
       subTotal: computed(() => store.state.orderItems
         .map((element: OrderItem) => element.individualPrice * element.quantity)
         .reduce((price: number, current: number) => current + price, 0)),
+        customerName,
     };
+  },
+  methods: {
+    // TODO implement methods using composition api syntax
+    updateCustomerName: (event) => {
+      customerName.value = event.target.value;
+      console.log(customerName.value);
+    },
   },
 };
 </script>
@@ -34,5 +53,28 @@ export default {
 
   .div-total {
     text-align: start;
+  }
+
+  .div-customer-name {
+    width: 80%;
+    margin-bottom: 25px;
+  }
+
+  .form-customer-name {
+    border: none;
+    font-size: 18pt;
+    border-bottom: solid 2px black;
+    transition: 0.3s all ease;
+    -moz-transition: 0.3s all ease;
+    -webkit-transition: 0.3s all ease;
+    text-decoration: none;
+    outline: none;
+    background: none;
+  }
+
+  .form-customer-name:focus {
+    text-decoration: none;
+    border-bottom: solid 2px rgb(35, 149, 255);
+    box-shadow: none;
   }
 </style>
