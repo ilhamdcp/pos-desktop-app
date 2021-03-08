@@ -21,8 +21,10 @@ export default {
     return {
       quantity: 0,
       addMenu() {
+        this.isActive = true;
         store.dispatch(ActionType.ADD_ORDER, { name: props.name, individualPrice: props.price });
       },
+      isActive: false,
     };
   },
 };
@@ -62,6 +64,10 @@ export default {
   }
   .buy-button:hover {
     cursor: pointer;
+  }
+
+  .active {
+    transform: translateY(20px);
   }
 
   @media (max-width: 768px) {

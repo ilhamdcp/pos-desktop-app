@@ -1,8 +1,5 @@
 <template>
   <div class="home">
-    <div class="navlist-container">
-
-    </div>
     <div class="menulist-container">
       <MenuList/>
     </div>
@@ -33,21 +30,15 @@ export default {
     height: 100%;
   }
 
-  .navlist-container {
-    overflow-y: scroll;
-    width: 20%;
-  }
-
   .menulist-container {
     height: 100vh;
     overflow-y: scroll;
     overflow-x: scroll;
-    width: 60%;
+    width: 80%;
   }
 
   .orderlist-container {
     height: 100vh;
-    overflow-y: scroll;
     width: 20%;
   }
 </style>
